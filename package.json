@@ -29,6 +29,7 @@
     "build": "siroc build && yarn build:types",
     "build:types": "./scripts/types.sh",
     "bump-next": "jiti ./scripts/bump-next",
+    "install": "npm run build",
     "dev": "nuxt demo",
     "heroku-postbuild": "nuxt build demo",
     "lint": "eslint --ext .ts,.js,.vue . && prettier --check .",
