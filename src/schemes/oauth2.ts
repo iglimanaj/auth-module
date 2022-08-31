@@ -1,5 +1,7 @@
 import requrl from 'requrl'
-import sha256 from 'crypto-js/sha256';
+// import sha256 from 'cryptojs/sha256';
+import CryptoJS from 'cryptojs';
+
 import type {
   RefreshableScheme,
   SchemePartialOptions,
@@ -515,10 +517,16 @@ export class Oauth2Scheme<
   }
 
   private _sha256(plain: string): Promise<ArrayBuffer> {
-    var hashDigest =  sha256(plain);
+    var hashDigest =  CryptoJS.SHA256(plain);
     const encoder = new TextEncoder()
-    return encoder.encode(hashDigest)
-    //return window.crypto.subtle.digest('SHA-256', data)
+    return new Promise(() => {
+      encoder.encode(hashDigest)
+    })
+     
+    
+    // const encoder = new TextEncoder()
+    // const data = encoder.encode(plain)
+    // return window.crypto.subtle.digest('SHA-256', data)
   }
 
   private _base64UrlEncode(str: ArrayBuffer): string {
