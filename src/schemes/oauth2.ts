@@ -1,6 +1,6 @@
 import requrl from 'requrl'
 // import sha256 from 'cryptojs/sha256';
-import CryptoJS from 'cryptojs';
+import CryptoJS from 'crypto-js';
 
 import type {
   RefreshableScheme,
