@@ -8276,7 +8276,7 @@ class Oauth2Scheme extends BaseScheme {
   }
   async pkceChallengeFromVerifier(v, hashValue) {
     if (hashValue) {
-      const hashed = await this._sha256(v);
+      const hashed = this._sha256(v);
       console.error(`const hashed ${hashed}`);
       return this._base64UrlEncode(hashed);
     }
@@ -8292,9 +8292,7 @@ class Oauth2Scheme extends BaseScheme {
     const encoder = new TextEncoder();
     console.error("IGLI: _sha256");
     console.error(plain);
-    return new Promise(() => {
-      encoder.encode(hashDigest).buffer;
-    });
+    return encoder.encode(hashDigest).buffer;
   }
   _base64UrlEncode(str) {
     return btoa(String.fromCharCode.apply(null, new Uint8Array(str))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
