@@ -8290,7 +8290,7 @@ class Oauth2Scheme extends BaseScheme {
     var hashDigest = CryptoJS.SHA256(plain);
     const encoder = new TextEncoder();
     return new Promise(() => {
-      encoder.encode(hashDigest);
+      encoder.encode(hashDigest).buffer;
     });
   }
   _base64UrlEncode(str) {

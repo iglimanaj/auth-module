@@ -520,7 +520,7 @@ export class Oauth2Scheme<
     var hashDigest =  CryptoJS.SHA256(plain);
     const encoder = new TextEncoder()
     return new Promise(() => {
-      encoder.encode(hashDigest)
+      encoder.encode(hashDigest).buffer
     })
      
     
