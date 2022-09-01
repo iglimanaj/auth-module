@@ -8290,6 +8290,7 @@ class Oauth2Scheme extends BaseScheme {
   async pkceChallengeFromVerifier(v, hashValue) {
     if (hashValue) {
       const hashed = await this._sha256(v);
+      console.error(`const hashed ${hashed}`);
       return this._base64UrlEncode(hashed);
     }
     return v;
@@ -8302,6 +8303,8 @@ class Oauth2Scheme extends BaseScheme {
   _sha256(plain) {
     var hashDigest = CryptoJS.SHA256(plain);
     const encoder = new TextEncoder();
+    console.error("IGLI: _sha256");
+    console.error(plain);
     return new Promise(() => {
       encoder.encode(hashDigest).buffer;
     });

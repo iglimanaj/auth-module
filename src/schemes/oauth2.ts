@@ -503,6 +503,7 @@ export class Oauth2Scheme<
   ): Promise<string> {
     if (hashValue) {
       const hashed = await this._sha256(v)
+      console.error(`const hashed ${hashed}`)
       return this._base64UrlEncode(hashed)
     }
     return v // plain is plain - url-encoded by default
@@ -519,6 +520,8 @@ export class Oauth2Scheme<
   private _sha256(plain: string): Promise<ArrayBuffer> {
     var hashDigest =  CryptoJS.SHA256(plain);
     const encoder = new TextEncoder()
+    console.error("IGLI: _sha256")
+    console.error(plain)
     return new Promise(() => {
       encoder.encode(hashDigest).buffer
     })
