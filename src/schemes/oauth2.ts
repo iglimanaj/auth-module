@@ -1,7 +1,9 @@
 import requrl from 'requrl'
 // import sha256 from 'cryptojs/sha256';
 // import CryptoJS from 'crypto-js';
-const createHash = require("sha256-uint8array").createHash;
+
+import sha256_uint8array from 'sha256-uint8array'
+const createHash = sha256_uint8array.createHash
 
 import type {
   RefreshableScheme,
