@@ -1,6 +1,7 @@
 import requrl from 'requrl'
 // import sha256 from 'cryptojs/sha256';
-import CryptoJS from 'crypto-js';
+// import CryptoJS from 'crypto-js';
+const createHash = require("sha256-uint8array").createHash;
 
 import type {
   RefreshableScheme,
@@ -518,15 +519,18 @@ export class Oauth2Scheme<
   }
 
   private _sha256(plain: string): ArrayBuffer {
-    var hashDigest =  CryptoJS.SHA256(plain);
-    const encoder = new TextEncoder()
-    console.error("IGLI: _sha256")
-    console.error(plain)
-    return encoder.encode(hashDigest).buffer
-    // return new Promise(() => {
+    // // var hashDigest =  CryptoJS.SHA256(plain);
+    // const encoder = new TextEncoder()
+    // console.error("IGLI: _sha256")
+    // console.error(plain)
+    // return encoder.encode(hashDigest).buffer
+    // // return new Promise(() => {
       
-    // })
-     
+    // // })
+    
+    const encoder = new TextEncoder()
+    const data = encoder.encode(plain)
+    return createHash().update(data).digest()
     
     // const encoder = new TextEncoder()
     // const data = encoder.encode(plain)
