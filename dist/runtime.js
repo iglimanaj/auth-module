@@ -1839,7 +1839,6 @@ class Oauth2Scheme extends BaseScheme {
   async pkceChallengeFromVerifier(v, hashValue) {
     if (hashValue) {
       const hashed = this._sha256(v);
-      console.error(`const hashed ${hashed}`);
       return this._base64UrlEncode(hashed);
     }
     return v;

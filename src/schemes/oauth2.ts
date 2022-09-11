@@ -1,7 +1,4 @@
 import requrl from 'requrl'
-// import sha256 from 'cryptojs/sha256';
-// import CryptoJS from 'crypto-js';
-
 import sha256_uint8array from 'sha256-uint8array'
 const createHash = sha256_uint8array.createHash
 
@@ -506,7 +503,6 @@ export class Oauth2Scheme<
   ): Promise<string> {
     if (hashValue) {
       const hashed = this._sha256(v)
-      console.error(`const hashed ${hashed}`)
       return this._base64UrlEncode(hashed)
     }
     return v // plain is plain - url-encoded by default
@@ -520,23 +516,10 @@ export class Oauth2Scheme<
     )
   }
 
-  private _sha256(plain: string): ArrayBuffer {
-    // // var hashDigest =  CryptoJS.SHA256(plain);
-    // const encoder = new TextEncoder()
-    // console.error("IGLI: _sha256")
-    // console.error(plain)
-    // return encoder.encode(hashDigest).buffer
-    // // return new Promise(() => {
-      
-    // // })
-    
+  private _sha256(plain: string): ArrayBuffer {    
     const encoder = new TextEncoder()
     const data = encoder.encode(plain)
     return createHash().update(data).digest()
-    
-    // const encoder = new TextEncoder()
-    // const data = encoder.encode(plain)
-    // return window.crypto.subtle.digest('SHA-256', data)
   }
 
   private _base64UrlEncode(str: ArrayBuffer): string {
