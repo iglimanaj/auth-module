@@ -63,7 +63,7 @@
     "@types/express-jwt": "^6.0.4",
     "@types/jest": "^27.4.1",
     "@types/jsonwebtoken": "^8.5.8",
-    "@types/lodash.get": "^4.4.6",
+    "@types/lodash.get": "^4.4.7",
     "@types/node": "^16.11.26",
     "@types/puppeteer": "^5.4.5",
     "babel-jest": "^27.5.1",
